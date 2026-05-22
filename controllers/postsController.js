@@ -1,4 +1,4 @@
-import { posts } from "../data/postsData";
+import { posts } from "../data/postsData.js";
 
 function index(request, response) {
     response.json(posts)
@@ -31,6 +31,13 @@ function show(request, response) {
         return post.id === realId;
     });
 
+    if (postFound === undefined) {
+        response.json({
+            errore: 'post non trovato',
+            risultato: null
+        })
+    }
+
     response.json({
         errore: null,
         risultato: postFound
@@ -56,14 +63,16 @@ function modify(request, response) {
 }
 
 function destroy(request, response) {
+    const {id} = request.params;
     response.json({
-        messaggio: 'hai inviato una richiesta per distruggere un elemento'
+        messaggio: `hai inviato una richiesta per distruggere il post: ${id}`
     })
 }
 
 export {
     index,
     show,
+    store,
     update,
     modify,
     destroy,
