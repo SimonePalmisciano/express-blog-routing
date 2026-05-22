@@ -1,5 +1,5 @@
 import express from 'express';
-import { posts } from './data/posts.js';
+import { posts } from './data/postsData.js';
 
 const app = express();
 const url = process.env.SERVER_URL;
