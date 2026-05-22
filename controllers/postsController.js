@@ -37,7 +37,34 @@ function show(request, response) {
     });
 }
 
+function store(request, response) {
+    response.json({
+        messaggio: 'hai inviato una richiesta di creazione'
+    })
+}
+
+function update(request, response) {
+    response.json({
+        messaggio: 'hai inviato una richiesta di modificare interamente un elemento'
+    })
+}
+
+function modify(request, response) {
+    response.json({
+        messaggio: 'hai inviato una richiesta di modificare parzialmente un elemento'
+    })
+}
+
+function destroy(request, response) {
+    response.json({
+        messaggio: 'hai inviato una richiesta per distruggere un elemento'
+    })
+}
+
 export {
     index,
     show,
+    update,
+    modify,
+    destroy,
 }
