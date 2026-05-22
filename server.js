@@ -9,15 +9,17 @@ const messaggioOk = {
     messaggio: 'va tutto bene nel server'
 };
 
+app.use(express.static('public'));
+
 app.get("/", (request, response) => {
-    response.json(messaggioOk)
+    response.json(messaggioOk);
 });
 
 app.get("/bacheca", (request, response) => {
     response.json(posts.map(post => {
         return {
             ...post,
-            img: `http://${url}:${port}/bacheca/${post.img}`,
+            img: `http://${url}:${port}/${post.img}`,
         }
     }));
 })
