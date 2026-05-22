@@ -11,10 +11,33 @@ function show(request, response) {
 
     if (isNaN(realId)) {
         response.status(404)
-        .json({
-            messaggio: '"id" non corretto',
-            risultato: null
-        });
+            .json({
+                errore: '"id" non corretto',
+                risultato: null
+            });
         return;
     }
+
+    if (realId <= 0) {
+        response.status(404)
+            .json({
+                errore: '"id" non corretto è minore di 0',
+                risultato: null
+            });
+        return;
+    }
+
+    const postFound = posts.find(post => {
+        return post.id === realId;
+    });
+
+    response.json({
+        errore: null,
+        risultato: postFound
+    });
+}
+
+export {
+    index,
+    show,
 }
